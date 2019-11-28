@@ -329,7 +329,7 @@ task launch_jboss(){
         println("Launcing JBoss...")
 
         def sout = new StringBuilder(), serr = new StringBuilder()
-        def proc = "$wildfly_home/bin/standalone.sh".execute()
+        def proc = "$wildfly_home\\bin\\standalone.bat".execute()
         proc.outputStream.close()
         proc.inputStream.eachLine {println it}
         proc.waitFor()
