@@ -115,12 +115,12 @@ task deployEar( ){
     println("deployin war package.....")
 
     println("deleting old deployments.....")
-    delete("$wildfly_home/standalone/deployments/distributed-systems-demo.ear")
+    delete("$wildfly_home\\standalone\\deployments\\distributed-systems-demo.ear")
     println("old depployments deleted.....")
 
     copy(){
-        from "$buildDir/libs/distributed-systems-demo.ear"
-        into "$wildfly_home/standalone/deployments/"
+        from "$buildDir\\libs\\distributed-systems-demo.ear"
+        into "$wildfly_home\\standalone\\deployments\\"
     }
 
     println("Application deployed!")
@@ -143,14 +143,14 @@ task prepareWar(){
 
         //PAGES
         copy {
-            from "$projectDir/src/main/webapp/index.jsp"
-            into "$buildDir/tmp/war"
+            from "$projectDir\\src\\main\\webapp\\index.jsp"
+            into "$buildDir\\tmp\\war"
         }
 
         //WEB.XML
         copy {
-            from "$projectDir/src/main/webapp/WEB-INF/web.xml"
-            into "$buildDir/tmp/war/WEB-INF/"
+            from "$projectDir\\src\\main\\webapp\\WEB-INF\\web.xml"
+            into "$buildDir\\tmp\\war\\WEB-INF\\"
         }
 
         /*
@@ -163,8 +163,8 @@ task prepareWar(){
 
         //CLASSES
         copy {
-            from "$buildDir/classes/java/main/"
-            into "$buildDir/tmp/war/WEB-INF/classes/"
+            from "$buildDir\\classes\\java\\main\\"
+            into "$buildDir\\tmp\\war\\WEB-INF\\classes\\"
         }
 
         //EVENTUALLY - LIBS
@@ -185,7 +185,7 @@ war {
 
 //   dependsOn('prepareWar')
 
-    from 'src/webapp' // adds a file-set to the root of the archive
+    from 'src\\webapp' // adds a file-set to the root of the archive
     //from 'tmp/war'
     include "*.cfg.xml"
     include "*.jsp"
@@ -210,8 +210,8 @@ task prepareEar(){
 //            into "$buildDir/tmp/ear/META-INF"
 //        }
         copy {
-            from "$projectDir/settings/application.xml"
-            into "$buildDir/tmp/ear/MATA-INF/"
+            from "$projectDir\\settings\\application.xml"
+            into "$buildDir\\tmp\\ear\\MATA-INF\\"
         }
 
         /*
@@ -225,8 +225,8 @@ task prepareEar(){
 
         // WAR
         copy {
-            from "$buildDir/libs/distributed-systems-demo.war"
-            into "$buildDir/tmp/ear"
+            from "$buildDir\\libs\\distributed-systems-demo.war"
+            into "$buildDir\\tmp\\ear"
         }
 
         // JAR
@@ -258,7 +258,7 @@ ear {
     includeEmptyDirs=false
 //    from "$buildDir/libs" -> !!!!! WARNING CAUSES A LOOOP !!!!!
 
-    appDirName 'src/main/application'  // use application metadata found in this folder
+    appDirName 'src\\main\\application'  // use application metadata found in this folder
     // put dependent libraries into APP-INF/lib inside the generated EAR
     libDirName 'lib'
     deploymentDescriptor {  // custom entries for application.xml:
