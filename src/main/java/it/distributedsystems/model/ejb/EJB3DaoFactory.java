@@ -24,7 +24,7 @@ public class EJB3DaoFactory extends DAOFactory {
         Hashtable props = new Hashtable();
         props.put("java.naming.factory.initial", "org.jnp.interfaces.NamingContextFactory");
         props.put("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
-        props.put("java.naming.provider.url", "127.0.0.1:1099"); //(new ServerInfo()).getHostAddress()  --- 127.0.0.1 --
+        props.put("java.naming.provider.url", "jnp://localhost:1099"); //(new ServerInfo()).getHostAddress()  --- 127.0.0.1 --
         return props;
     }
 
