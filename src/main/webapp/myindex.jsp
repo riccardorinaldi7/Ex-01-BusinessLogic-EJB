@@ -54,34 +54,11 @@
 
 	<%
 	    DAOFactory daoFactory = DAOFactory.getDAOFactory( application.getInitParameter("dao") );
-	    CustomerDAO customerDAO = daoFactory.getCustomerDAO();
-	    PurchaseDAO purchaseDAO = daoFactory.getPurchaseDAO();
-        ProductDAO productDAO = daoFactory.getProductDAO();
+	    //CustomerDAO customerDAO = daoFactory.getCustomerDAO();
+	    //PurchaseDAO purchaseDAO = daoFactory.getPurchaseDAO();
+        //ProductDAO productDAO = daoFactory.getProductDAO();
         ProducerDAO producerDAO = daoFactory.getProducerDAO();
 
-        String operation = request.getParameter("operation");
-        if ( operation != null && operation.equals("insertCustomer") ) {
-            Customer customer = new Customer();
-            customer.setName( request.getParameter("name") );
-            int id = customerDAO.insertCustomer( customer );
-            out.println("<!-- inserted customer '" + customer.getName() + "', with id = '" + id + "' -->");
-        }
-        else if ( operation != null && operation.equals("insertProducer") ) {
-            Producer producer = new Producer();
-            producer.setName( request.getParameter("name") );
-            int id = producerDAO.insertProducer( producer );
-            out.println("<!-- inserted producer '" + producer.getName() + "', with id = '" + id + "' -->");
-        }
-        else if ( operation != null && operation.equals("insertProduct") ) {
-            Product product = new Product();
-            product.setName( request.getParameter("name") );
-            product.setProductNumber(Integer.parseInt(request.getParameter("number")));
-
-            Producer producer = producerDAO.findProducerByName(request.getParameter("producer"));
-            product.setProducer(producer);
-            int id = productDAO.insertProduct(product);
-            out.println("<!-- inserted product '" + product.getName() + "' with id = '" + id + "' -->");
-        }
 
         //Da aggiungere la possibilità di fare un ordine in sessione e di finalizzarla per creare un purchase.
     %>
@@ -97,11 +74,6 @@
 			<input type="submit" name="submit" value="submit"/>
 		</form>
 	</div>
-
-	<%
-        List producers = producerDAO.getAllProducers();
-        if ( producers.size() > 0 ) {
-    %>
 
 	<div>
 		<p>Add Producer:</p>
@@ -121,7 +93,10 @@
 			<input type="submit" name="submit" value="submit"/>
 		</form>
 	</div>
-
+	<%
+        List producers = producerDAO.getAllProducers();
+        if ( producers.size() > 0 ) {
+    %>
 	<div>
 		<p>Add Product:</p>
 		<form>
@@ -131,19 +106,18 @@
 
 			<option value=""></option>
 
-
 			<input type="hidden" name="operation" value="insertProduct"/>
 			<input type="submit" name="submit" value="submit"/>
 		</form>
 	</div>
-    <%
+	<%
     }// end if
     else {
     %>
 	<div>
 		<p>At least one Producer must be present to add a new Product.</p>
 	</div>
-    <%
+	<%
         } // end else
     %>
 	<div>
@@ -154,7 +128,7 @@
 	</div>
 
 	<div>
-		<a href="">Ricarica lo stato iniziale di questa pagina</a>
+		<a href="<%= request.getContextPath() %>">Ricarica lo stato iniziale di questa pagina</a>
 	</div>
 
 	</body>
