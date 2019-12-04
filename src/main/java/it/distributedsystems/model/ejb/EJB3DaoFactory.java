@@ -22,9 +22,13 @@ public class EJB3DaoFactory extends DAOFactory {
 
     private static Hashtable getInitialContextProperties() {
         Hashtable props = new Hashtable();
-        props.put("java.naming.factory.initial", "org.jnp.interfaces.NamingContextFactory");
-        props.put("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
-        props.put("java.naming.provider.url", "jnp://localhost:1099"); //(new ServerInfo()).getHostAddress()  --- 127.0.0.1 --
+        //props.put("java.naming.factory.initial", "org.jnp.interfaces.NamingContextFactory");
+        //props.put("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
+        //props.put("java.naming.provider.url", "jnp://localhost:1099"); //(new ServerInfo()).getHostAddress()  --- 127.0.0.1 --
+        props.put("java.naming.factory.initial", "org.jboss.naming.remote.client.InitialContextFactory");
+        props.put("java.naming.factory.url.pkgs", "org.jboss.ejb.client.naming");
+        props.put("java.naming.provider.url", "http-remoting://localhost:8080"); //(new ServerInfo()).getHostAddress()  --- 127.0.0.1 --
+        props.put("jboss.naming.client.ejb.context", "true");
         return props;
     }
 
