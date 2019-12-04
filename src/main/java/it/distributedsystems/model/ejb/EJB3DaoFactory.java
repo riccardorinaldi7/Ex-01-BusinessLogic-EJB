@@ -65,7 +65,7 @@ public class EJB3DaoFactory extends DAOFactory {
     public ProducerDAO getProducerDAO() {
         try {
             InitialContext context = getInitialContext();
-            ProducerDAO result = (ProducerDAO)context.lookup("java:global/distributed-systems-demo/EJB3ProducerDAO/local");
+            ProducerDAO result = (ProducerDAO)context.lookup("java:module/EJB3ProducerDAO");
             return result;
         } catch (Exception var3) {
             logger.error("Error looking up EJB3ProducerDAO", var3);
