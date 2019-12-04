@@ -96,8 +96,8 @@ dependencies {
     compile group: 'org.jboss.naming', name: 'jboss-naming-build', version: '5.0.5.Final'
     // https://mvnrepository.com/artifact/org.jboss.naming/jnp-client
     compile group: 'org.jboss.naming', name: 'jnp-client', version: '5.0.5.Final'
-
-
+    //inserito da me
+    compile group: 'org.wildfly', name: 'wildfly-ejb-client-bom', version: '11.0.0.Final'
 
 
     // TESTS ----------------------------------------------------------------------------------------------------
