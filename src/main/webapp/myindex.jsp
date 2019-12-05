@@ -54,12 +54,12 @@
 
 	<%
 	    DAOFactory daoFactory = DAOFactory.getDAOFactory( application.getInitParameter("dao") );
-	    //CustomerDAO customerDAO = daoFactory.getCustomerDAO();
+	    CustomerDAO customerDAO = daoFactory.getCustomerDAO();
 	    //PurchaseDAO purchaseDAO = daoFactory.getPurchaseDAO();
         //ProductDAO productDAO = daoFactory.getProductDAO();
         //ProducerDAO producerDAO = daoFactory.getProducerDAO();
-        Customer c = new Customer();
-        daoFactory.fanculoJNDI(c);
+        //Customer c = new Customer();
+        //daoFactory.fanculoJNDI(c);
 
         //Da aggiungere la possibilità di fare un ordine in sessione e di finalizzarla per creare un purchase.
     %>

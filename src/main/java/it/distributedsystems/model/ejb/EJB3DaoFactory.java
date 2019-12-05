@@ -29,12 +29,8 @@ public class EJB3DaoFactory extends DAOFactory {
 //        props.put("java.naming.factory.initial", "org.jnp.interfaces.NamingContextFactory");
 //        props.put("java.naming.factory.url.pkgs", "org.jboss.naming:org.jnp.interfaces");
 //        props.put("java.naming.provider.url", "jnp://localhost:1099"); //(new ServerInfo()).getHostAddress()  --- 127.0.0.1 --
-//        props.put("java.naming.factory.initial", "org.jboss.naming.remote.client.InitialContextFactory");
-//        props.put("java.naming.factory.url.pkgs", "org.jboss.ejb.client.naming");
-//        props.put("java.naming.provider.url", "http-remoting://localhost:8080"); //(new ServerInfo()).getHostAddress()  --- 127.0.0.1 --
-//        props.put("jboss.naming.client.ejb.context", "true");
-        props.put("java.naming.factory.initial", "org.wildfly.naming.client.WildflyInitialContextFactory");
-        props.put("java.naming.provider.url", "localhost");
+//        props.put("java.naming.factory.initial", "org.wildfly.naming.client.WildflyInitialContextFactory");
+//        props.put("java.naming.provider.url", "localhost");
         return props;
     }
 
@@ -75,7 +71,7 @@ public class EJB3DaoFactory extends DAOFactory {
     public ProducerDAO getProducerDAO() {
         try {
             InitialContext context = getInitialContext();
-            ProducerDAO result = (ProducerDAO)context.lookup("java:module/EJB3ProducerDAO");
+            ProducerDAO result = (ProducerDAO)context.lookup("distributed-systems-demo/EJB3ProducerDAO/local");
             return result;
         } catch (Exception var3) {
             logger.error("Error looking up EJB3ProducerDAO", var3);
@@ -83,17 +79,4 @@ public class EJB3DaoFactory extends DAOFactory {
         }
     }
 
-    public void fanculoJNDI(Customer c){
-        try {
-            InitialContext context = getInitialContext();
-
-            context.bind("fanculo", c);
-
-            Customer cazzo = (Customer) context.lookup("fanculo");
-
-            if(cazzo != null) logger.info("questa volta ha funzionato:");
-        } catch (Exception e) {
-            logger.error("ti ha preso per il culo l'ennesima volta:", e);
-        }
-    }
 }

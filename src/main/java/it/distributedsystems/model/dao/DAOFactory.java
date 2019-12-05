@@ -30,5 +30,4 @@ public abstract class DAOFactory {
 
     public abstract ProducerDAO getProducerDAO();
 
-    public abstract void fanculoJNDI(Customer c);
 }
