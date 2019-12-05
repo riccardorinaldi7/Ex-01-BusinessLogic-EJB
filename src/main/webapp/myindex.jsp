@@ -57,8 +57,9 @@
 	    //CustomerDAO customerDAO = daoFactory.getCustomerDAO();
 	    //PurchaseDAO purchaseDAO = daoFactory.getPurchaseDAO();
         //ProductDAO productDAO = daoFactory.getProductDAO();
-        ProducerDAO producerDAO = daoFactory.getProducerDAO();
-
+        //ProducerDAO producerDAO = daoFactory.getProducerDAO();
+        Customer c = new Customer();
+        daoFactory.fanculoJNDI(c);
 
         //Da aggiungere la possibilità di fare un ordine in sessione e di finalizzarla per creare un purchase.
     %>
@@ -93,10 +94,6 @@
 			<input type="submit" name="submit" value="submit"/>
 		</form>
 	</div>
-	<%
-        List producers = producerDAO.getAllProducers();
-        if ( producers.size() > 0 ) {
-    %>
 	<div>
 		<p>Add Product:</p>
 		<form>
@@ -110,16 +107,9 @@
 			<input type="submit" name="submit" value="submit"/>
 		</form>
 	</div>
-	<%
-    }// end if
-    else {
-    %>
 	<div>
 		<p>At least one Producer must be present to add a new Product.</p>
 	</div>
-	<%
-        } // end else
-    %>
 	<div>
 		<p>Products currently in the database:</p>
 		<table>
@@ -128,7 +118,7 @@
 	</div>
 
 	<div>
-		<a href="<%= request.getContextPath() %>">Ricarica lo stato iniziale di questa pagina</a>
+		<a href="">Ricarica lo stato iniziale di questa pagina</a>
 	</div>
 
 	</body>
