@@ -4,6 +4,7 @@ package it.distributedsystems.model.ejb;
 import it.distributedsystems.model.dao.Customer;
 import it.distributedsystems.model.dao.CustomerDAO;
 
+import javax.annotation.Resource;
 import javax.ejb.*;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
@@ -11,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Stateless
+//@Resource(name="EJB3CustomerDAO")
 @Local(CustomerDAO.class)
 //@Remote(CustomerDAO.class) //-> TODO: serve nella versione clustering???
 public class EJB3CustomerDAO implements CustomerDAO {

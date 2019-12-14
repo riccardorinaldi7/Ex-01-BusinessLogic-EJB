@@ -1,11 +1,10 @@
 package it.distributedsystems.model.ejb;
 
 //import it.distributedsystems.model.logging.OperationLogger;
-import it.distributedsystems.model.dao.Customer;
-import it.distributedsystems.model.dao.CustomerDAO;
 import it.distributedsystems.model.dao.Producer;
 import it.distributedsystems.model.dao.ProducerDAO;
 
+import javax.annotation.Resource;
 import javax.ejb.*;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
@@ -13,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Stateless
+//@Resource(name="EJB3ProcuderDAO")
 @Local(ProducerDAO.class)
 //@Remote(ProducerDAO.class) //-> TODO: serve nella versione clustering???
 public class EJB3ProducerDAO implements ProducerDAO {

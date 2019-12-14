@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.Resource;
 import javax.ejb.Local;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
@@ -19,6 +20,7 @@ import javax.persistence.PersistenceContext;
 
 
 @Stateless
+//@Resource(name="EJB3ProductDAO")
 @Local(ProductDAO.class)
 //@Remote(ProductDAO.class)  //-> TODO: serve nella versione clustering???
 public class EJB3ProductDAO implements ProductDAO {
