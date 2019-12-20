@@ -3,6 +3,7 @@ package it.distributedsystems.model.ejb;
 //import it.distributedsystems.model.logging.OperationLogger;
 import it.distributedsystems.model.dao.Producer;
 import it.distributedsystems.model.dao.ProducerDAO;
+import org.hibernate.Hibernate;
 
 import javax.ejb.*;
 import javax.interceptor.Interceptors;
@@ -57,8 +58,9 @@ public class EJB3ProducerDAO implements ProducerDAO {
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public Producer findProducerByName(String name) {
         if(name != null && !name.equals("")) {
-            return (Producer) em.createQuery("FROM Producer p where p.name = :producerName").
-                    setParameter("producerName", name).getSingleResult();
+            return (Producer) em.createQuery("FROM Producer p where p.name = :producerName")
+                    .setParameter("producerName", name)
+                    .getSingleResult();
         } else
             return null;
     }

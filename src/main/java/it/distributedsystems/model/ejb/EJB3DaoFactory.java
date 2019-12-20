@@ -6,7 +6,6 @@ import javax.naming.InitialContext;
 import it.distributedsystems.model.dao.*;
 import org.apache.log4j.Logger;
 import org.jboss.system.server.ServerInfo;
-import org.wildfly.naming.client.WildFlyInitialContext;
 
 public class EJB3DaoFactory extends DAOFactory {
     private static Logger logger = Logger.getLogger("DAOFactory");

@@ -18,7 +18,7 @@
   
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
-    <property name="hibernate.hbm2ddl.auto">create</property>
+    <property name="hibernate.hbm2ddl.auto">create-drop</property>
   
     <!-- JDBC connection pool (use the built-in) -->
     <property name="connection.pool_size">10</property>
@@ -27,10 +27,12 @@
      <mapping class="it.distributedsystems.model.ejb.Employee" />
      <mapping class="it.distributedsystems.model.ejb.Department" />
 
+ <!-- sono già in persistence.xml
      <mapping class="it.distributedsystems.model.dao.Customer" />
      <mapping class="it.distributedsystems.model.dao.Producer" />
      <mapping class="it.distributedsystems.model.dao.Product" />
      <mapping class="it.distributedsystems.model.dao.Purchase" />
+ -->
  
  </session-factory>
 </hibernate-configuration>

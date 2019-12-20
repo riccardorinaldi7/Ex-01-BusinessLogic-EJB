@@ -25,10 +25,11 @@
             <!--    <property name="connection.driver_class" value="com.mysql.jdbc.Driver"/>-->
             <property name="connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
             <!--    <property name="dialect" value="org.hibernate.dialect.MySQL8DialectDialect"/>-->
-            <property name="dialect" value="org.hibernate.dialect.MySQL57Dialect"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect"/>
 
             <property name="show_sql" value="true"/>
             <property name="format_sql" value="true"/>
+            <!-- create-drop dovrebbe essere la causa della cancellazione dei dati quando si chiude l'applicazione-->
             <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
 
             <!-- JDBC connection pool (use the built-in) -->
