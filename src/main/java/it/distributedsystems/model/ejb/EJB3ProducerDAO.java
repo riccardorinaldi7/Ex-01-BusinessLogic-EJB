@@ -1,6 +1,6 @@
 package it.distributedsystems.model.ejb;
 
-//import it.distributedsystems.model.logging.OperationLogger;
+import it.distributedsystems.model.logging.OperationLogger;
 import it.distributedsystems.model.dao.Producer;
 import it.distributedsystems.model.dao.ProducerDAO;
 import org.hibernate.Hibernate;
@@ -20,7 +20,7 @@ public class EJB3ProducerDAO implements ProducerDAO {
     EntityManager em;
 
     @Override
-//    @Interceptors(OperationLogger.class)
+    @Interceptors(OperationLogger.class)
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public int insertProducer(Producer producer) {
         em.persist(producer);

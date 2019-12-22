@@ -1,6 +1,6 @@
 package it.distributedsystems.model.ejb;
 
-//import it.distributedsystems.model.logging.OperationLogger;
+import it.distributedsystems.model.logging.OperationLogger;
 import it.distributedsystems.model.dao.*;
 
 import java.util.HashSet;
@@ -28,10 +28,11 @@ public class EJB3ProductDAO implements ProductDAO {
 
 
     @Override
-//    @Interceptors(OperationLogger.class)
+    @Interceptors(OperationLogger.class)
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public int insertProduct(Product product) {
 
+        /*aggiunta*/product.setProducer(em.merge(product.getProducer()));
         em.persist(product);
         return product.getId();
     }

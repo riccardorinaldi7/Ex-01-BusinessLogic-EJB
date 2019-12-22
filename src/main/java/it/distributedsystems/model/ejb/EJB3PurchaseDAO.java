@@ -1,10 +1,11 @@
 package it.distributedsystems.model.ejb;
 
-//import it.distributedsystems.model.logging.OperationLogger;
+import it.distributedsystems.model.logging.OperationLogger;
 import it.distributedsystems.model.dao.Customer;
 import it.distributedsystems.model.dao.Product;
 import it.distributedsystems.model.dao.Purchase;
 import it.distributedsystems.model.dao.PurchaseDAO;
+import org.apache.log4j.Logger;
 
 import java.util.HashSet;
 import java.util.List;
@@ -25,11 +26,12 @@ import javax.persistence.PersistenceContext;
 @Local(PurchaseDAO.class)
 //@Remote(PurchaseDAO.class)  //-> TODO: serve nella versione clustering???
  public class EJB3PurchaseDAO implements PurchaseDAO {
+    private static Logger logger = Logger.getLogger("DAOFactory");
 
     @PersistenceContext(unitName = "distributed-systems-demo")
     EntityManager em;
 
-//    @Interceptors(OperationLogger.class)
+    @Interceptors(OperationLogger.class)
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public int insertPurchase(Purchase purchase) {
 
@@ -48,6 +50,7 @@ import javax.persistence.PersistenceContext;
             purchase.setProducts(products);
         }
 
+        /*aggiunta*/logger.info("PurchaseDAO: prima di persistere numero di prodotti uguale a  " + products.size());
         em.persist(purchase);
         return purchase.getId();
     }

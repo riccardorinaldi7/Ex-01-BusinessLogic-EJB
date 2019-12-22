@@ -240,7 +240,7 @@
             		while ( iterator.hasNext() ) {
             		    Purchase purch = (Purchase) iterator.next();
             %>
-            <tr><td><%= purch.getCustomer().getName()%></td><td><%= purch.getPurchaseNumber()%></td><td><%= purchaseToString(purch)%></td></tr>
+            <tr><td><%= purch.getCustomer().getName()%></td><td><%= purch.getPurchaseNumber()%></td><td><%= purch.getProducts().size()%></td></tr>
             <%
             		}//end while
             %>

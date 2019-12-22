@@ -1,6 +1,6 @@
 package it.distributedsystems.model.ejb;
 
-//import it.distributedsystems.model.logging.OperationLogger;
+import it.distributedsystems.model.logging.OperationLogger;
 
 import it.distributedsystems.model.dao.*;
 import org.apache.log4j.Logger;
@@ -27,7 +27,6 @@ public class EJB3Cart implements Cart{
     }
 
     @Override
-//    @Interceptors(OperationLogger.class)
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public int insertProduct(Product product) {
         products.add(product);
@@ -37,7 +36,7 @@ public class EJB3Cart implements Cart{
     @Override
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public int submitPurchase(Customer customer) {
-        Purchase purchase = new Purchase(customer.getId()+1, customer, new HashSet<>(products));
+        Purchase purchase = new Purchase((int) (Math.random()*100), customer, new HashSet<>(products));
 
         DAOFactory daoFactory = DAOFactory.getDAOFactory("dao");
         PurchaseDAO purchaseDao = daoFactory.getPurchaseDAO();

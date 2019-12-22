@@ -67,7 +67,7 @@ public class Product implements Serializable {
     }
 
     @ManyToOne(
-            cascade = {CascadeType.MERGE/*,CascadeType.PERSIST*/,CascadeType.REFRESH},
+            cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
             fetch = FetchType.EAGER
     )
     public Producer getProducer() {
