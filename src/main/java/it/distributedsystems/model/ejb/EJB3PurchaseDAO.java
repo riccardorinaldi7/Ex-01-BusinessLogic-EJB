@@ -26,7 +26,7 @@ import javax.persistence.PersistenceContext;
 @Local(PurchaseDAO.class)
 //@Remote(PurchaseDAO.class)  //-> TODO: serve nella versione clustering???
  public class EJB3PurchaseDAO implements PurchaseDAO {
-    private static Logger logger = Logger.getLogger("DAOFactory");
+    //private static Logger logger = Logger.getLogger("EJB3PurchaseDAO");
 
     @PersistenceContext(unitName = "distributed-systems-demo")
     EntityManager em;
@@ -50,7 +50,7 @@ import javax.persistence.PersistenceContext;
             purchase.setProducts(products);
         }
 
-        /*aggiunta*/logger.info("PurchaseDAO: prima di persistere numero di prodotti uguale a  " + products.size());
+        //logger.info("PurchaseDAO: prima di persistere numero di prodotti uguale a  " + products.size());
         em.persist(purchase);
         return purchase.getId();
     }

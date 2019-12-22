@@ -335,4 +335,12 @@ task launch_jboss(){
     }
 }
 
+task launchStandaloneFull(type:Exec) {
+    workingDir "$wildfly_home\\bin"
+
+    //on windows:
+    commandLine 'cmd', '/c', 'standalone.bat -c=standalone-full.xml'
+
+}
+
 //--------------------------------------------------------------------------------------------

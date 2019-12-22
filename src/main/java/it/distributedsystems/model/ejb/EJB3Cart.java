@@ -18,7 +18,7 @@ import java.util.List;
 @Local(Cart.class)
 //@Remote(CustomerDAO.class) //-> TODO: serve nella versione clustering???
 public class EJB3Cart implements Cart{
-    private static Logger logger = Logger.getLogger("DAOFactory");
+    //private static Logger logger = Logger.getLogger("EJB3Cart");
 
     List<Product> products;
 
@@ -41,8 +41,7 @@ public class EJB3Cart implements Cart{
         DAOFactory daoFactory = DAOFactory.getDAOFactory("dao");
         PurchaseDAO purchaseDao = daoFactory.getPurchaseDAO();
         purchaseDao.insertPurchase(purchase);
-        logger.info(purchaseToString(purchase));
-
+        //logger.info(purchaseToString(purchase));
         return purchase.getPurchaseNumber();
     }
 
